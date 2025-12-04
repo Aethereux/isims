@@ -1,12 +1,14 @@
 @font-face {
     font-family: 'Degular Demo Bold';
-    src: url('/Fonts/DegularDemo-Black.otf') format('opentype');
+    /* FIXED: Lowercase path */
+    src: url('/fonts/DegularDemo-Black.otf') format('opentype');
     font-weight: 900;
     font-style: normal;
 }
 @font-face {
     font-family: 'Degular Demo';
-    src: url('/Fonts/DegularDemo-Regular.otf') format('opentype');
+    /* FIXED: Lowercase path */
+    src: url('/fonts/DegularDemo-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
@@ -73,8 +75,6 @@ body{
     justify-content: center;
     align-items: center;
     position: relative;
-
-    /*for display.php*/
     flex-direction: column;
 }
 
@@ -134,7 +134,6 @@ form{
     font-size: 1.2rem;
 }
 
-/*make the upload file not overflow the container*/
 .studentImage input[type="file"] {
     max-width: 100%;
     width: 100%;
@@ -198,7 +197,6 @@ input, select{
     font-size: 1rem;
 }
 
-/* FIX: Changed position to 'fixed' to prevent layout shifts/shaking */
 #circleAnimation {
     position: fixed;
     top: 0;
@@ -209,7 +207,7 @@ input, select{
     z-index: -1;
 }
 
-/* display.php styles */
+/* Display styles */
 .mainWrapper {
     width: 100%;
     height: calc(100vh - 100px);
@@ -327,13 +325,11 @@ input, select{
     margin: 0 1rem;
 }
 
-/*table styles */
 .dataTable {
     width: 100%;
     border-collapse: collapse;
     font-size: 1rem;
     overflow: hidden;
-    /* CRITICAL FIX: Ensures table columns obey fixed width rules */
     table-layout: fixed;
 }
 
@@ -347,19 +343,18 @@ input, select{
     padding: .8rem;
 }
 
-/* CRITICAL FIX: Explicitly set widths for all 11 columns */
-.dataTable thead th:nth-child(1), .dataTable tbody td:nth-child(1) { width: 70px; height:80px; padding: 0.5rem 0.2rem; text-align: center;} /* Picture */
-.dataTable thead th:nth-child(2), .dataTable tbody td:nth-child(2) { width: 50px; } /* ID */
-.dataTable thead th:nth-child(3), .dataTable tbody td:nth-child(3) { width: 140px; } /* Full Name */
-.dataTable thead th:nth-child(4), .dataTable tbody td:nth-child(4) { width: 95px; } /* Date of Birth */
-.dataTable thead th:nth-child(5), .dataTable tbody td:nth-child(5) { width: 70px; } /* Gender */
-.dataTable thead th:nth-child(6), .dataTable tbody td:nth-child(6) { width: 80px; } /* Program */
-.dataTable thead th:nth-child(7), .dataTable tbody td:nth-child(7) { width: 75px; } /* Year Level */
-.dataTable thead th:nth-child(8), .dataTable tbody td:nth-child(8) { width: 90px; } /* Contact Number */
-.dataTable thead th:nth-child(9), .dataTable tbody td:nth-child(9) { width: 150px; } /* Email */
-.dataTable thead th:nth-child(10), .dataTable tbody td:nth-child(10) { width: 95px; } /* Date Registered */
-.dataTable thead th:last-child, .dataTable tbody td:last-child { width: 130px; } /* Actions */
-
+/* Column Widths */
+.dataTable thead th:nth-child(1), .dataTable tbody td:nth-child(1) { width: 70px; text-align: center;}
+.dataTable thead th:nth-child(2), .dataTable tbody td:nth-child(2) { width: 50px; }
+.dataTable thead th:nth-child(3), .dataTable tbody td:nth-child(3) { width: 140px; }
+.dataTable thead th:nth-child(4), .dataTable tbody td:nth-child(4) { width: 95px; }
+.dataTable thead th:nth-child(5), .dataTable tbody td:nth-child(5) { width: 70px; }
+.dataTable thead th:nth-child(6), .dataTable tbody td:nth-child(6) { width: 80px; }
+.dataTable thead th:nth-child(7), .dataTable tbody td:nth-child(7) { width: 75px; }
+.dataTable thead th:nth-child(8), .dataTable tbody td:nth-child(8) { width: 90px; }
+.dataTable thead th:nth-child(9), .dataTable tbody td:nth-child(9) { width: 150px; }
+.dataTable thead th:nth-child(10), .dataTable tbody td:nth-child(10) { width: 95px; }
+.dataTable thead th:last-child, .dataTable tbody td:last-child { width: 130px; }
 
 .dataTable tbody tr {
     border-bottom: 1px solid var(--dark-gray);
@@ -367,12 +362,10 @@ input, select{
 
 .dataTable tbody td {
     padding: 1rem;
-    /* FIX: Prevents content overflow by breaking long words */
     word-break: break-all;
     overflow: hidden;
 }
 
-/* FIX: Ensure the image is block level and has strict size to prevent shifts/flickering */
 .dataTable img {
     width: 60px;
     height: 60px;
@@ -389,7 +382,6 @@ input, select{
     gap: .5rem;
 }
 
-/*popup styles */
 .clearInfoOverlay {
     display: none;
     position: fixed;
@@ -428,18 +420,16 @@ input, select{
 .answer button {
     cursor: pointer;
     font-size: 0.8rem;
-    height: 2rem; /* More reasonable height */
+    height: 2rem;
     width: 5rem;
-    display: flex; /* Needed for centering text */
+    display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: var(--dark-blue);
     color: var(--white);
     border: none;
 }
 
-/* Success/Error Popup Styles */
 .successPopup {
     display: none;
     position: fixed;
@@ -531,7 +521,6 @@ input, select{
     background-color: var(--deep-navy);
 }
 
-/* Confirmation Popup Styles */
 .confirmationPopup {
     display: none;
     position: fixed;

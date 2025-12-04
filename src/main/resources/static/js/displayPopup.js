@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const popupIcon = document.querySelector('.successPopup .popupIcon');
     const popupTitle = document.getElementById('popupTitle');
     const popupText = document.getElementById('popupText');
-    
+
     let pendingDeleteId = null;
 
     // Show success/error popup
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 popupTitle.textContent = 'Error!';
                 popupText.textContent = message;
             }
-            
+
             // Show the popup
             successPopup.style.display = 'flex';
         }
@@ -62,19 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
             if (pendingDeleteId) {
-                // Create a form to submit the delete request
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'delete_student.php';
-                
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'student_id';
-                input.value = pendingDeleteId;
-                
-                form.appendChild(input);
-                document.body.appendChild(form);
-                form.submit();
+                // UPDATED: Redirect to Spring Boot Delete Controller
+                window.location.href = '/delete/' + pendingDeleteId;
             }
             confirmationPopup.style.display = 'none';
         });
@@ -93,20 +82,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (messageElement) {
         const message = messageElement.textContent.trim();
         const type = messageElement.classList.contains('success') ? 'success' : 'error';
-        
+
         // Hide the original message element
         messageElement.style.display = 'none';
-        
+
         // Show the popup instead
         showPopup(message, type);
     }
 
     // Make functions globally available
     window.showDeleteConfirmation = showDeleteConfirmation;
+
+    // UPDATED: Point to correct Spring Boot URL
     window.updateStudent = function(id) {
-        window.location.href = 'update_student.php?id=' + id;
+        window.location.href = '/update/' + id;
     };
-    
+
     window.deleteStudent = function(id) {
         showDeleteConfirmation(id);
     };

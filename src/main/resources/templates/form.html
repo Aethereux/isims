@@ -9,6 +9,8 @@
 
     <script defer th:src="@{/js/validation.js}"></script>
     <script defer th:src="@{/js/animation.js}"></script>
+    <script defer th:src="@{/js/popUp.js}"></script>
+    <script defer th:src="@{/js/successPopup.js}"></script>
 </head>
 <body>
 <header class="header_container">
@@ -25,6 +27,8 @@
 <div class="mainContainer">
     <div class="admissionForm">
         <h1 th:text="${student.id == null ? 'Student Admission Form' : 'Update Student Information'}"></h1>
+
+        <div th:if="${message}" th:text="${message}" th:class="${'message ' + messageType}"></div>
 
         <div th:if="${#fields.hasErrors('${student.*}')}" class="message error">
             <p>Please correct the errors below.</p>
@@ -98,9 +102,38 @@
 
                 <div class="buttonContainer">
                     <button type="submit" class="submitBtn" th:text="${student.id == null ? 'SUBMIT' : 'UPDATE'}">SUBMIT</button>
+                    <button type="reset" class="submitBtn" id="resetBtn">RESET</button>
                     <a th:href="@{/}" class="submitBtn" style="text-decoration: none; text-align: center; background-color: #dc3545;">CANCEL</a>
                 </div>
             </form>
+        </div>
+
+        <div class="clearInfoOverlay" id="clearInfoOverlay">
+            <div class="clearInfo" id="clearInfoPopup">
+                <div class="question">
+                    <p>This will reset all fields. Proceed?</p>
+                </div>
+                <div class="answer">
+                    <button type="button" class="confirmBtn" id="confirm">CONFIRM</button>
+                    <button type="button" class="cancelBtn" id="cancel">CANCEL</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="successPopup" id="successPopup">
+            <div class="popupContent">
+                <div class="popupIcon">
+                    <i class="fas fa-check-circle" id="successIcon"></i>
+                    <i class="fas fa-exclamation-triangle" id="errorIcon"></i>
+                </div>
+                <div class="popupMessage">
+                    <h3 id="popupTitle">Success!</h3>
+                    <p id="popupText">Operation completed successfully!</p>
+                </div>
+                <div class="popupButtons">
+                    <button type="button" class="okBtn" id="okBtn">OK</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
