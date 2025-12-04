@@ -16,16 +16,16 @@ public class Student {
 
     @Column(name = "full_name", length = 100)
     @NotBlank(message = "Full Name is required")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Full Name must contain only letters and spaces") // From validation.js
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Full Name must contain only letters and spaces")
     private String fullName;
 
     @Column(name = "dob")
-    @NotNull(message = "Birthday is required")
-    private LocalDate dob;
+    @NotNull(message = "Birthdate is required")
+    private LocalDate birthdate;
 
     @Column(name = "gender")
     @NotBlank(message = "Gender is required")
-    private String gender; // You can also use an Enum here
+    private String gender;
 
     @Column(name = "course", length = 50)
     @NotBlank(message = "Program is required")
@@ -37,15 +37,14 @@ public class Student {
 
     @Column(name = "contact_number", length = 15)
     @NotBlank(message = "Mobile Number is required")
-    @Pattern(regexp = "^\\+?\\d{10,15}$", message = "Invalid mobile number") // From validation.js
+    @Pattern(regexp = "^\\+?\\d{10,15}$", message = "Invalid mobile number")
     private String contactNumber;
 
     @Column(name = "email", length = 100)
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format") // From validation.js
+    @Email(message = "Invalid email format")
     private String email;
 
-    // Stores the image as binary data (BLOB)
     @Lob
     @Column(name = "student_picture", columnDefinition = "LONGBLOB")
     private byte[] studentPicture;
@@ -54,7 +53,6 @@ public class Student {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    // Constructors
     public Student() {}
 
     // Getters and Setters
@@ -64,8 +62,9 @@ public class Student {
     public String getFullName() { return fullName; }
     public void setFullName(String fullName) { this.fullName = fullName; }
 
-    public LocalDate getDob() { return dob; }
-    public void setDob(LocalDate dob) { this.dob = dob; }
+    // Updated Getters/Setters for birthdate
+    public LocalDate getBirthdate() { return birthdate; }
+    public void setBirthdate(LocalDate birthdate) { this.birthdate = birthdate; }
 
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
@@ -88,7 +87,6 @@ public class Student {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    // Helper method to encode image to Base64 for display in Thymeleaf
     public String getStudentPictureBase64() {
         if (studentPicture != null && studentPicture.length > 0) {
             return java.util.Base64.getEncoder().encodeToString(studentPicture);
