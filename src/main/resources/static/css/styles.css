@@ -198,8 +198,9 @@ input, select{
     font-size: 1rem;
 }
 
+/* FIX: Changed position to 'fixed' to prevent layout shifts/shaking */
 #circleAnimation {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -332,7 +333,8 @@ input, select{
     border-collapse: collapse;
     font-size: 1rem;
     overflow: hidden;
-    table-layout: auto;
+    /* CRITICAL FIX: Ensures table columns obey fixed width rules */
+    table-layout: fixed;
 }
 
 .dataTable thead {
@@ -345,20 +347,40 @@ input, select{
     padding: .8rem;
 }
 
+/* CRITICAL FIX: Explicitly set widths for all 11 columns */
+.dataTable thead th:nth-child(1), .dataTable tbody td:nth-child(1) { width: 70px; height:80px; padding: 0.5rem 0.2rem; text-align: center;} /* Picture */
+.dataTable thead th:nth-child(2), .dataTable tbody td:nth-child(2) { width: 50px; } /* ID */
+.dataTable thead th:nth-child(3), .dataTable tbody td:nth-child(3) { width: 140px; } /* Full Name */
+.dataTable thead th:nth-child(4), .dataTable tbody td:nth-child(4) { width: 95px; } /* Date of Birth */
+.dataTable thead th:nth-child(5), .dataTable tbody td:nth-child(5) { width: 70px; } /* Gender */
+.dataTable thead th:nth-child(6), .dataTable tbody td:nth-child(6) { width: 80px; } /* Program */
+.dataTable thead th:nth-child(7), .dataTable tbody td:nth-child(7) { width: 75px; } /* Year Level */
+.dataTable thead th:nth-child(8), .dataTable tbody td:nth-child(8) { width: 90px; } /* Contact Number */
+.dataTable thead th:nth-child(9), .dataTable tbody td:nth-child(9) { width: 150px; } /* Email */
+.dataTable thead th:nth-child(10), .dataTable tbody td:nth-child(10) { width: 95px; } /* Date Registered */
+.dataTable thead th:last-child, .dataTable tbody td:last-child { width: 130px; } /* Actions */
+
+
 .dataTable tbody tr {
     border-bottom: 1px solid var(--dark-gray);
 }
 
 .dataTable tbody td {
     padding: 1rem;
+    /* FIX: Prevents content overflow by breaking long words */
+    word-break: break-all;
+    overflow: hidden;
 }
 
+/* FIX: Ensure the image is block level and has strict size to prevent shifts/flickering */
 .dataTable img {
-    width: 6rem;
-    height: 5rem;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border: 1px solid var(--dark-blue);
-    margin: 0;
+    margin: 0 auto;
+    display: block;
+    border-radius: 4px;
 }
 
 .buttonCont{
