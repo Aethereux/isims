@@ -1,0 +1,559 @@
+@font-face {
+    font-family: 'Degular Demo Bold';
+    src: url('/Fonts/DegularDemo-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Degular Demo';
+    src: url('/Fonts/DegularDemo-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --deep-navy: #071C41;
+    --black: #000000;
+    --dark-blue: #14346D;
+    --vivid-medium-blue: #014FB3;
+    --white: #FFFFFF;
+    --gray:#E0DCDC;
+    --dark-gray: #393636;
+    --red:#dc3545;
+    --yellow: #FFC107;
+    --green: #28a745;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Degular Demo', sans-serif;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    background:linear-gradient(to right, var(--black) 20%, var(--dark-blue) 80%);
+}
+
+/*Header Styling*/
+.header_container {
+    display: flex;
+    height: 100px;
+    padding: 1rem;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.header_container img {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    margin-left: 1rem;
+}
+
+.navBar {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--white);
+}
+
+.navBar .active{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.mainContainer {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    /*for display.php*/
+    flex-direction: column;
+}
+
+/*Form Styling*/
+.admissionForm {
+    width:80%;
+    border-radius: 1.5rem;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+}
+
+.admissionForm h1{
+    margin: 0;
+    font-family: 'Degular Demo Bold', sans-serif;
+}
+
+.formContainer {
+    width: 100%;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.formFields {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.studentInfo{
+    width: 70%;
+    gap: 2rem;
+    display: flex;
+}
+
+.studentInfo label{
+    margin-top: .5rem;
+}
+
+.studentImage{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 3px dashed var(--deep-navy);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/*make the upload file not overflow the container*/
+.studentImage input[type="file"] {
+    max-width: 100%;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.stack{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.personalDetails{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.genderAndBirthday, .contactInfo{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+input, select{
+    padding: 0.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.academicDetails{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.personalDetails input,
+.academicDetails input,
+.stack select,
+.stack input {
+    margin-bottom: .5rem;
+}
+
+.buttonContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.submitBtn{
+    width: 15%;
+    cursor: pointer;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+#circleAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* display.php styles */
+.mainWrapper {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.featuresContainer {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0%;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-family: 'Degular Demo Bold', sans-serif;
+    color: var(--white);
+}
+
+.searchBar{
+    width:55%;
+    height: 2.5rem;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: row;
+    border-radius: 1rem;
+    align-items: center;
+    position: relative;
+}
+
+.searchBar input {
+    border: none;
+    outline: none;
+    flex:1;
+    padding: 0 1rem;
+}
+
+.searchBar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.clearSearch {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--dark-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.clearSearch:hover {
+    color: var(--dark-blue);
+}
+
+.studentData {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: .5rem;
+    height: 75%;
+}
+
+.topContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message{
+    font-size: 1.2rem;
+    color: var(--deep-navy);
+    margin: 1rem;
+}
+
+.pageController {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+.pageController button {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.pageController button:hover:not(:disabled) {
+    background-color: var(--vivid-medium-blue);
+}
+
+.pageController button:disabled {
+    background-color: var(--gray);
+    color: var(--dark-gray);
+    cursor: not-allowed;
+}
+
+.pageInfo {
+    font-weight: bold;
+    color: var(--dark-blue);
+    margin: 0 1rem;
+}
+
+/*table styles */
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    overflow: hidden;
+    table-layout: auto;
+}
+
+.dataTable thead {
+    background-color: var(--vivid-medium-blue);
+    color: var(--white);
+    text-align: left;
+}
+
+.dataTable thead th {
+    padding: .8rem;
+}
+
+.dataTable tbody tr {
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.dataTable tbody td {
+    padding: 1rem;
+}
+
+.dataTable img {
+    width: 6rem;
+    height: 5rem;
+    object-fit: cover;
+    border: 1px solid var(--dark-blue);
+    margin: 0;
+}
+
+.buttonCont{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+/*popup styles */
+.clearInfoOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.clearInfo {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    z-index: 1000;
+}
+
+.answer {
+    padding: 2rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.answer button {
+    cursor: pointer;
+    font-size: 0.8rem;
+    height: 2rem; /* More reasonable height */
+    width: 5rem;
+    display: flex; /* Needed for centering text */
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+}
+
+/* Success/Error Popup Styles */
+.successPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupContent{
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: popupAppear 0.3s ease-out;
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popupIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.popupIcon #successIcon {
+    color: var(--green);
+    display: none;
+}
+
+.popupIcon #errorIcon {
+    color: var(--red);
+    display: none;
+}
+
+.popupIcon.success #successIcon {
+    display: inline-block;
+}
+
+.popupIcon.error #errorIcon {
+    display: inline-block;
+}
+
+.popupMessage h3 {
+    color: var(--deep-navy);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.popupMessage p {
+    color: var(--dark-gray);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.4;
+}
+
+.popupButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.okBtn {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.okBtn:hover {
+    background-color: var(--deep-navy);
+}
+
+/* Confirmation Popup Styles */
+.confirmationPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmationPopup .popupIcon #questionIcon {
+    color: var(--yellow);
+    display: inline-block;
+}
+
+.confirmationPopup .popupButtons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cancelBtn {
+    background-color: var(--gray);
+    color: var(--dark-gray);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.confirmBtn {
+    background-color: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
