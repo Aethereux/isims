@@ -21,6 +21,13 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    // Inside StudentController.java
+    @GetMapping("/landingPage")
+    public String showLandingPage() {
+        // Spring will look for src/main/resources/templates/landingPage.html
+        return "landingPage";
+    }
+
     @GetMapping("/")
     public String viewHomePage(
             @RequestParam(defaultValue = "1") int page,
