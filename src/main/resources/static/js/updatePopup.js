@@ -47,13 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Check if there's a message and show popup
     const messageElement = document.querySelector('.message');
     if (messageElement) {
         const message = messageElement.textContent.trim();
         const type = messageElement.classList.contains('success') ? 'success' : 'error';
-        
-        // Hide the original message element
+
         messageElement.style.display = 'none';
         
     

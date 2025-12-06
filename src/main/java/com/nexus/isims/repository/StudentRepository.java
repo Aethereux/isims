@@ -7,8 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
-
-    // Custom query to search by name, course, or year level
+    
     @Query("SELECT s FROM Student s WHERE " +
             "LOWER(s.fullName) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(s.course) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +

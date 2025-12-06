@@ -21,10 +21,8 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    // Inside StudentController.java
     @GetMapping("/landingPage")
     public String showLandingPage() {
-        // Spring will look for src/main/resources/templates/landingPage.html
         return "landingPage";
     }
 
@@ -79,12 +77,10 @@ public class StudentController {
             studentService.saveStudent(student);
 
             if (isNew) {
-                // If creating, stay on form (like PHP insert.php)
                 redirectAttributes.addFlashAttribute("message", "Student record added successfully!");
                 redirectAttributes.addFlashAttribute("messageType", "success");
                 return "redirect:/form";
             } else {
-                // If updating, go to list (like PHP update_student.php)
                 redirectAttributes.addFlashAttribute("message", "Student record updated successfully!");
                 redirectAttributes.addFlashAttribute("messageType", "success");
                 return "redirect:/";

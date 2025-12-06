@@ -1,4 +1,3 @@
-// Display page popup functionality
 document.addEventListener('DOMContentLoaded', function() {
     const successPopup = document.getElementById('successPopup');
     const confirmationPopup = document.getElementById('confirmationPopup');
@@ -25,32 +24,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 popupText.textContent = message;
             }
 
-            // Show the popup
             successPopup.style.display = 'flex';
         }
     }
 
-    // Show confirmation popup for delete
     function showDeleteConfirmation(studentId) {
         pendingDeleteId = studentId;
         confirmationPopup.style.display = 'flex';
     }
 
-    // Close success popup
     if (okBtn) {
         okBtn.addEventListener('click', function() {
             successPopup.style.display = 'none';
         });
     }
 
-    // Close success popup when clicking outside
     successPopup.addEventListener('click', function(e) {
         if (e.target === successPopup) {
             successPopup.style.display = 'none';
         }
     });
 
-    // Cancel delete operation
     if (cancelDeleteBtn) {
         cancelDeleteBtn.addEventListener('click', function() {
             confirmationPopup.style.display = 'none';
@@ -58,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Confirm delete operation
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
             if (pendingDeleteId) {
@@ -69,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close confirmation popup when clicking outside
     confirmationPopup.addEventListener('click', function(e) {
         if (e.target === confirmationPopup) {
             confirmationPopup.style.display = 'none';
@@ -83,17 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const message = messageElement.textContent.trim();
         const type = messageElement.classList.contains('success') ? 'success' : 'error';
 
-        // Hide the original message element
         messageElement.style.display = 'none';
 
-        // Show the popup instead
         showPopup(message, type);
     }
 
-    // Make functions globally available
     window.showDeleteConfirmation = showDeleteConfirmation;
 
-    // UPDATED: Point to correct Spring Boot URL
     window.updateStudent = function(id) {
         window.location.href = '/update/' + id;
     };

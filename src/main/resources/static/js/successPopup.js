@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Check if there's a message and show popup
     const messageElement = document.querySelector('.message');
     if (messageElement) {
         const message = messageElement.textContent.trim();
